@@ -1,7 +1,7 @@
 package com.example.roty.food.service;
 
 
-import com.example.roty.food.domain.entity.Review;
+import com.example.roty.domain.entity.Review;
 import com.example.roty.food.domain.request.ReviewRequest;
 import com.example.roty.food.domain.request.ReviewUpdateRequest;
 import com.example.roty.food.domain.response.ReviewResponse;

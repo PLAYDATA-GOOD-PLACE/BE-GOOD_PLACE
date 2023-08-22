@@ -1,11 +1,11 @@
-package com.example.roty.store.domain.response;
+package com.example.roty.domain.response;
 
 
 
-import com.example.roty.recommend.domain.entity.Recommend;
-import com.example.roty.store.domain.dto.StoreDto;
-import com.example.roty.store.domain.dto.UserDto;
-import com.example.roty.store.domain.entity.Store;
+import com.example.roty.domain.dto.StoreDto;
+import com.example.roty.domain.dto.UserDto;
+import com.example.roty.domain.entity.Store;
+import com.example.roty.domain.entity.Recommend;
 import lombok.Getter;
 
 import java.util.List;

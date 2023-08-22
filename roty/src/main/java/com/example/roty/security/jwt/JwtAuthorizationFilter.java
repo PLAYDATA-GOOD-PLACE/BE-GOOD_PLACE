@@ -1,6 +1,6 @@
 package com.example.roty.security.jwt;
 
-import com.example.roty.User.domain.User;
+import com.example.roty.domain.entity.User;
 import com.example.roty.User.repository.UserRepository;
 import com.example.roty.security.oauth.PrincipalDetails;
 import io.jsonwebtoken.Claims;
@@ -9,7 +9,6 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

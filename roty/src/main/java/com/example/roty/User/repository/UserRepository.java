@@ -1,6 +1,6 @@
 package com.example.roty.User.repository;
 
-import com.example.roty.User.domain.User;
+import com.example.roty.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

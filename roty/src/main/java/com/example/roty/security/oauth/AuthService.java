@@ -1,6 +1,6 @@
 package com.example.roty.security.oauth;
 
-import com.example.roty.User.domain.User;
+import com.example.roty.domain.entity.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;

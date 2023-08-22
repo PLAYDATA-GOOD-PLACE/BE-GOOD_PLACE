@@ -1,14 +1,10 @@
 package com.example.roty.security.oauth;
 
-import com.example.roty.User.domain.User;
+import com.example.roty.domain.entity.User;
 import com.example.roty.User.repository.UserRepository;
 import com.example.roty.security.oauth.provider.KakaoUserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;

@@ -1,6 +1,6 @@
 package com.example.roty.security.oauth;
 
-import com.example.roty.User.domain.User;
+import com.example.roty.domain.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

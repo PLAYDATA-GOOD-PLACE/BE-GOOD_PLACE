@@ -1,7 +1,7 @@
 package com.example.roty.food.controller;
 
 
-import com.example.roty.food.domain.entity.Comment;
+import com.example.roty.domain.entity.Comment;
 import com.example.roty.food.domain.request.CommentRequest;
 import com.example.roty.food.domain.request.CommentUpdateRequest;
 import com.example.roty.food.domain.response.CommentResponse;

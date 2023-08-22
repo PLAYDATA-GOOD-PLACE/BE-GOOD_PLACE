@@ -1,6 +1,6 @@
-package com.example.roty.store.domain.dto;
+package com.example.roty.domain.dto;
 
-import com.example.roty.store.domain.entity.Store;
+import com.example.roty.domain.entity.Store;
 import lombok.Getter;
 
 @Getter

@@ -1,7 +1,5 @@
-package com.example.roty.recommend.domain.entity;
+package com.example.roty.domain.entity;
 
-import com.example.roty.User.domain.User;
-import com.example.roty.store.domain.entity.Store;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

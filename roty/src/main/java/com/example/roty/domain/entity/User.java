@@ -1,4 +1,4 @@
-package com.example.roty.User.domain;
+package com.example.roty.domain.entity;
 
 
 import jakarta.persistence.Entity;

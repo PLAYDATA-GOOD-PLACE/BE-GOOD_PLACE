@@ -1,12 +1,11 @@
 package com.example.roty.User.controller;
 
 
-import com.example.roty.User.domain.User;
+import com.example.roty.domain.entity.User;
 import com.example.roty.User.service.UserService;
 import com.example.roty.security.oauth.AuthService;
 import com.example.roty.security.oauth.PrincipalDetails;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;

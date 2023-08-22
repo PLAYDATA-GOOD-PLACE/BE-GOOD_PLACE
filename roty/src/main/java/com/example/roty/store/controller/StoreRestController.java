@@ -1,7 +1,7 @@
 package com.example.roty.store.controller;
 
 
-import com.example.roty.store.domain.response.StoreResponse;
+import com.example.roty.domain.response.StoreResponse;
 import com.example.roty.store.service.StoreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

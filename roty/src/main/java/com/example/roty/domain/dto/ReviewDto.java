@@ -1,7 +1,7 @@
-package com.example.roty.food.domain.dto;
+package com.example.roty.domain.dto;
 
 
-import com.example.roty.food.domain.entity.Review;
+import com.example.roty.domain.entity.Review;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

@@ -1,6 +1,6 @@
 package com.example.roty.favorite.service;
 
-import com.example.roty.favorite.domain.Favorite;
+import com.example.roty.domain.entity.Favorite;
 import com.example.roty.favorite.repository.FavoriteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

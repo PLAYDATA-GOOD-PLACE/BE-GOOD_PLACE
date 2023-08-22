@@ -1,4 +1,4 @@
-package com.example.roty.food.domain.entity;
+package com.example.roty.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,18 +9,17 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "review")
-public class Review {
+@Table(name = "comment")
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reviewSeq;
+    private Long commentSeq;
     @Column(columnDefinition = "TEXT")
-    private String content; //리뷰  내용
+    private String content; //댓글 내용
 
-    //    @ManyToOne
+//    @ManyToOne
 
     public void update(String content) {
         this.content = content;
     }
-
 }
