@@ -19,7 +19,7 @@ public class CommentController {
     private final CommentService commentService;
 
     @GetMapping
-    public List<Comment> findAllComment() {
+    public List<CommentResponse> findAllComment() {
         return commentService.findAllComment();
     }
 

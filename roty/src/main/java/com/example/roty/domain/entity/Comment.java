@@ -17,7 +17,9 @@ public class Comment {
     @Column(columnDefinition = "TEXT")
     private String content; //댓글 내용
 
-//    @ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 
     public void update(String content) {
         this.content = content;
