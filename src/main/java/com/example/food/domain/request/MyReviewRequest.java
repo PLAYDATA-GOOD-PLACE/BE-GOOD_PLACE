@@ -1,6 +1,6 @@
 package com.example.food.domain.request;
 
-import com.example.food.domain.entity.Review;
+import com.example.food.domain.entity.MyReview;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,11 +10,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReviewRequest {
+public class MyReviewRequest {
     private String content;
 
-    public Review toEntity() {
-        return Review.builder()
+    public MyReview toEntity() {
+        return MyReview.builder()
                 .content(content)
                 .build();
     }

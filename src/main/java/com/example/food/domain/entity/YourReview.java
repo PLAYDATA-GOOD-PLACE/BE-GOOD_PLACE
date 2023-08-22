@@ -9,11 +9,11 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "review")
-public class Review {
+@Table(name = "yourReview")
+public class YourReview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reviewSeq;
+    private Long yourReviewSeq;
     @Column(columnDefinition = "TEXT")
     private String content; //리뷰  내용
 
