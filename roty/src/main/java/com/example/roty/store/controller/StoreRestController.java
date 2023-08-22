@@ -18,9 +18,9 @@ public class StoreRestController {
 
     @CrossOrigin("*")
     @PostMapping("/submit-selected-places")
-    public ResponseEntity<String> submitSelectedPlaces(@RequestParam("data") String data) {
+    public ResponseEntity<String> submitSelectedPlaces(@RequestParam("selectedPlacesData") String selectedPlacesData) {
         try {
-            storeService.saveSelectedPlaces(data);
+            storeService.saveSelectedPlaces(selectedPlacesData);
             return new ResponseEntity<>("Selected places submitted successfully.", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed to submit selected places.", HttpStatus.INTERNAL_SERVER_ERROR);

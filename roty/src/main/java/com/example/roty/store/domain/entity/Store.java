@@ -17,7 +17,6 @@ import java.util.List;
 @Getter
 @Builder
 public class Store {
-
     @Id
     @GeneratedValue
     private Long id;
