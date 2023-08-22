@@ -2,9 +2,9 @@ package com.example.roty.food.controller;
 
 
 import com.example.roty.domain.entity.Review;
-import com.example.roty.food.domain.request.ReviewRequest;
-import com.example.roty.food.domain.request.ReviewUpdateRequest;
-import com.example.roty.food.domain.response.ReviewResponse;
+import com.example.roty.domain.request.ReviewRequest;
+import com.example.roty.domain.request.ReviewUpdateRequest;
+import com.example.roty.domain.response.ReviewResponse;
 import com.example.roty.food.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

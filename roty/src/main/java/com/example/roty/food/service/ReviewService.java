@@ -2,9 +2,9 @@ package com.example.roty.food.service;
 
 
 import com.example.roty.domain.entity.Review;
-import com.example.roty.food.domain.request.ReviewRequest;
-import com.example.roty.food.domain.request.ReviewUpdateRequest;
-import com.example.roty.food.domain.response.ReviewResponse;
+import com.example.roty.domain.request.ReviewRequest;
+import com.example.roty.domain.request.ReviewUpdateRequest;
+import com.example.roty.domain.response.ReviewResponse;
 import com.example.roty.food.repository.ReviewRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class ReviewService {
         reviewRepository.save(reviewRequest.toEntity());
     }
 
-    public ReviewResponse updateReview(Long reviewSeq , ReviewUpdateRequest reviewUpdateRequest) {
+    public ReviewResponse updateReview(Long reviewSeq, ReviewUpdateRequest reviewUpdateRequest) {
         Review review = findById(reviewSeq);
         review.update(reviewUpdateRequest.getContent());
         return new ReviewResponse(review);
@@ -39,7 +39,7 @@ public class ReviewService {
     }
 
     private Review findById(Long reviewSeq) {
-        return reviewRepository.findById(reviewSeq).orElseThrow(()-> new RuntimeException());
+        return reviewRepository.findById(reviewSeq).orElseThrow(() -> new RuntimeException());
     }
 
 

@@ -2,9 +2,10 @@ package com.example.roty.food.service;
 
 
 import com.example.roty.domain.entity.Comment;
-import com.example.roty.food.domain.request.CommentRequest;
-import com.example.roty.food.domain.request.CommentUpdateRequest;
-import com.example.roty.food.domain.response.CommentResponse;
+
+import com.example.roty.domain.request.CommentRequest;
+import com.example.roty.domain.request.CommentUpdateRequest;
+import com.example.roty.domain.response.CommentResponse;
 import com.example.roty.food.repository.CommentRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +40,6 @@ public class CommentService {
     }
 
     private Comment findById(Long commentSeq) {
-        return commentRepository.findById(commentSeq).orElseThrow(()->new RuntimeException());
+        return commentRepository.findById(commentSeq).orElseThrow(() -> new RuntimeException());
     }
 }
