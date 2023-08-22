@@ -21,7 +21,7 @@ public class AuthService {
         SecretKeySpec key = getKey();
         String compact = Jwts.builder()
                 .claim("memberId", user.getUserId())
-                .claim("name", user.getUsername())
+                .claim("username", user.getUsername())
                 .claim("email",user.getEmail())
 
                 .setExpiration(new Date(System.currentTimeMillis() + 120_000))

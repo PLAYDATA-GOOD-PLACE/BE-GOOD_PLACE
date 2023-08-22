@@ -75,9 +75,11 @@ public class Oauth2UserService extends DefaultOAuth2UserService {
             user.setEmail(oAuth2UserInfo.getEmail());
             userRepository.save(user);
         } else {
+
+            //토큰에 담을 것user
             // user의 패스워드가 null이기 때문에 OAuth 유저는 일반적인 로그인을 할 수 없음.
             user = User.builder()
-                    .username(oAuth2UserInfo.getProvider() + "_" + oAuth2UserInfo.getProviderId())
+                    .username(oAuth2UserInfo.getName())
                     .email(oAuth2UserInfo.getEmail())
                     .role("ROLE_USER")
                     .provider(oAuth2UserInfo.getProvider())
@@ -89,25 +91,25 @@ public class Oauth2UserService extends DefaultOAuth2UserService {
 
         }
 
-        PrincipalDetails principalDetails = new PrincipalDetails(user);
-        Authentication authentication =
-                new UsernamePasswordAuthenticationToken(
-                        principalDetails, //나중에 컨트롤러에서 DI해서 쓸 때 사용하기 편함.
-                        null, // 패스워드는 모르니까 null 처리, 어차피 지금 인증하는게 아니니까!!
-                        principalDetails.getAuthorities());
+//        PrincipalDetails principalDetails = new PrincipalDetails(user);
+//        Authentication authentication =
+//                new UsernamePasswordAuthenticationToken(
+//                        principalDetails, //나중에 컨트롤러에서 DI해서 쓸 때 사용하기 편함.
+//                        null, // 패스워드는 모르니까 null 처리, 어차피 지금 인증하는게 아니니까!!
+//                        principalDetails.getAuthorities());
+//
+//        // 강제로 시큐리티의 세션에 접근하여 값 저장
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // 강제로 시큐리티의 세션에 접근하여 값 저장
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-
-        if (SecurityContextHolder.getContext().getAuthentication() == null) {
-            Authentication authentication2 = new UsernamePasswordAuthenticationToken(
-                    principalDetails,
-                    null,
-                    principalDetails.getAuthorities()
-            );
-            SecurityContextHolder.getContext().setAuthentication(authentication2);
-        }
+//
+//        if (SecurityContextHolder.getContext().getAuthentication() == null) {
+//            Authentication authentication2 = new UsernamePasswordAuthenticationToken(
+//                    principalDetails,
+//                    null,
+//                    principalDetails.getAuthorities()
+//            );
+//            SecurityContextHolder.getContext().setAuthentication(authentication2);
+//        }
 
         return new PrincipalDetails(user, oAuth2User.getAttributes());
     }

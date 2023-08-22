@@ -1,9 +1,10 @@
 package com.example.roty.User.domain;
 
 
-import com.example.roty.recommend.domain.entity.Recommend;
-import com.example.roty.store.domain.entity.Store;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,9 +36,6 @@ public class User implements UserDetails {
     private String provider;
 
     private String providerId;
-
-    @OneToMany(mappedBy = "user")
-    private List<Recommend> stores;
 
     @Override
     public String getPassword() {

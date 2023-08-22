@@ -1,4 +1,5 @@
-package com.example.roty.User.domain.dto;
+package com.example.roty.store.domain.dto;
+
 
 import com.example.roty.User.domain.User;
 import lombok.Getter;
