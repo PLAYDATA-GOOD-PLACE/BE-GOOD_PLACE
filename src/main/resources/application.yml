@@ -1,5 +1,6 @@
 spring:
   datasource:
+<<<<<<< HEAD
     url: jdbc:mysql://localhost:3306/roty?serverTimezone=Asia/Seoul
     username: root
     password: 1q2w3e4r
@@ -31,4 +32,18 @@ jwt:
 
 
 
+=======
+    url: jdbc:mysql://localhost:3306/test1?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: 1q2w3e4r!!
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  port: 8080
+>>>>>>> feature/jh
 
