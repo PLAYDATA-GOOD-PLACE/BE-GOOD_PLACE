@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 public class Store {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String placeId;
     private String name;

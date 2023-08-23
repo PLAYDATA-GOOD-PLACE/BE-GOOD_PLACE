@@ -18,14 +18,17 @@ public class StoreRestController {
 
     @CrossOrigin("*")
     @PostMapping("/submit-selected-places")
-    public ResponseEntity<String> submitSelectedPlaces(@RequestParam("selectedPlacesData") String selectedPlacesData) {
+    public ResponseEntity<String> submitSelectedPlaces(
+            @RequestParam("selectedPlacesData") String selectedPlacesData,
+            @RequestParam("reviews") String reviews) {
         try {
-            storeService.saveSelectedPlaces(selectedPlacesData);
+            storeService.saveSelectedPlaces(selectedPlacesData, reviews);
             return new ResponseEntity<>("Selected places submitted successfully.", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed to submit selected places.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 
     @GetMapping
     public Page<StoreResponse> getAll(

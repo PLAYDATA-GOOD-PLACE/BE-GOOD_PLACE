@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class StoreService {
     private final StoreRepository storeRepository;
 
-    public void saveSelectedPlaces(String data) {
+    public void saveSelectedPlaces(String data, String reviews) {
 
         JSONParser parser = new JSONParser();
         try {
@@ -35,12 +35,13 @@ public class StoreService {
                         .storeImgUrl((String) dataJson.get("place_url"))
                         .coordinateX((String) dataJson.get("x"))
                         .coordinateY((String) dataJson.get("y"))
+                        .myReview(reviews) // Set the reviews value
                         .build();
 
                 if (!storeRepository.existsByPlaceId(store.getPlaceId())) {
                     storeRepository.save(store);
                 } else {
-                    throw new RuntimeException("STORE WITH PLACE ID ALREADY EXIST.");
+                    throw new RuntimeException("STORE WITH PLACE ID ALREADY EXISTS.");
                 }
             }
         } catch (ParseException e) {
@@ -48,6 +49,7 @@ public class StoreService {
             throw new RuntimeException("FAILED TO PARSE DATA.");
         }
     }
+
 
     public Page<StoreResponse> findAll(PageRequest request) {
         Page<Store> all = storeRepository.findAll(request);

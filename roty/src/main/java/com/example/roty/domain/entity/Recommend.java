@@ -13,7 +13,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @Builder
 public class Recommend {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne

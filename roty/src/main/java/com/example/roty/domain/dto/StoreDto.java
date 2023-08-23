@@ -14,8 +14,9 @@ public class StoreDto {
     private String storeImgUrl;
     private String coordinateX;
     private String coordinateY;
+    private String myReview;
 
-    public StoreDto(Long id, String placeId, String name, String address, String phone, String foodType, String storeImgUrl, String coordinateX, String coordinateY) {
+    public StoreDto(Long id, String placeId, String name, String address, String phone, String foodType, String storeImgUrl, String coordinateX, String coordinateY, String myReview) {
         this.id = id;
         this.placeId = placeId;
         this.name = name;
@@ -25,6 +26,7 @@ public class StoreDto {
         this.storeImgUrl = storeImgUrl;
         this.coordinateX = coordinateX;
         this.coordinateY = coordinateY;
+        this.myReview = myReview;
     }
 
     public StoreDto(Store store) {
@@ -37,5 +39,6 @@ public class StoreDto {
         this.storeImgUrl = store.getStoreImgUrl();
         this.coordinateX = store.getCoordinateX();
         this.coordinateY = store.getCoordinateY();
+        this.myReview = store.getMyReview();
     }
 }
