@@ -3,6 +3,8 @@ package com.example.roty.domain.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -25,4 +27,9 @@ public class Review {
         this.content = content;
     }
 
+    @OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
+    private List<Comment> comments;
+
+    @ManyToOne
+    private Store store;
 }
