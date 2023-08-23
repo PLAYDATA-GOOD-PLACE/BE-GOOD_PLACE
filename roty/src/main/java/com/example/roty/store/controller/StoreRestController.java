@@ -49,4 +49,9 @@ public class StoreRestController {
     ) {
         return storeService.findByAddressContains(PageRequest.of(page, size), keyword);
     }
+
+    @GetMapping("/place/{id}")
+    public StoreResponse getAllByPlaceId(@PathVariable("id") String placeId) {
+        return storeService.findByPlaceId(placeId);
+    }
 }
