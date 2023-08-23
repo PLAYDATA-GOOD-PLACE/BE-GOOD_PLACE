@@ -21,6 +21,9 @@ public class Comment {
     @JoinColumn(name = "userId")
     private User user;
 
+    @ManyToOne
+    private Review review;
+
     public void update(String content) {
         this.content = content;
     }

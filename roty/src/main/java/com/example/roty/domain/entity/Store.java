@@ -24,6 +24,8 @@ public class Store {
     private String phone;
     private String foodType;
     private String storeImgUrl;
+    @Column(columnDefinition = "TEXT")
+    private String myReview;
     @Column(name = "coordinate_x")
     private String coordinateX;
     @Column(name = "coordinate_y")
