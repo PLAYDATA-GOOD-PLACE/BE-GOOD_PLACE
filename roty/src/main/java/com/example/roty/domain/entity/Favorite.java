@@ -20,7 +20,7 @@ public class Favorite {
     @ManyToOne
     private User user;
 
-//    @ManyToOne
-//    private Store store;
+    @ManyToOne
+    private Store store;
 
 }

@@ -30,4 +30,7 @@ public class Store {
     private String coordinateY;
     @OneToMany(mappedBy = "store")
     private List<Recommend> users;
+    @OneToMany(mappedBy = "store")
+    private List<Favorite> favorites;
+
 }
