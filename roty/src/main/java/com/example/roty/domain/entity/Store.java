@@ -33,4 +33,6 @@ public class Store {
     @OneToMany(mappedBy = "store")
     private List<Favorite> favorites;
 
+    @OneToMany(mappedBy = "store")
+    private List<Review> reviews;
 }

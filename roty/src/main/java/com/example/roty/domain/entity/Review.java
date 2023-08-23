@@ -20,6 +20,7 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+    
 
     public void update(String content) {
         this.content = content;
