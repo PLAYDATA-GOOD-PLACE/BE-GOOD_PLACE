@@ -4,6 +4,7 @@ import com.example.roty.domain.entity.Store;
 import com.example.roty.domain.response.StoreResponse;
 import com.example.roty.store.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -58,4 +59,5 @@ public class StoreService {
         Page<Store> all = storeRepository.findAllByAddressContaining(request, keyword);
         return all.map(StoreResponse::new);
     }
+
 }
