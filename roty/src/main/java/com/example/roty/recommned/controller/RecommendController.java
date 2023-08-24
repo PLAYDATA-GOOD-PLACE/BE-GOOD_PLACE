@@ -10,6 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/recommend")
@@ -23,11 +25,13 @@ public class RecommendController {
     public ResponseEntity<String> submitSelectedPlaces(Authentication authentication,
                                                        @RequestParam("selectedPlacesData") String selectedPlacesData,
                                                        @RequestParam("reviews") String reviews,
-                                                       @RequestParam("file") MultipartFile multipartFile, String nameFile,
+                                                       @RequestParam("files") List<MultipartFile> multipartFiles,
+                                                       @RequestParam("nameFiles") List<String> nameFiles,
                                                        @RequestParam("placeId") String placeId) {
         try {
             recommendService.saveSelectedPlaces(authentication, selectedPlacesData, reviews);
-            firebaseService.uploadFiles(multipartFile, placeId, nameFile);
+            firebaseService.uploadFiles(multipartFiles, nameFiles, placeId);
+            // You can use the mediaLinks for any further processing if needed
             return new ResponseEntity<>("Selected places submitted successfully.", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed to submit selected places.", HttpStatus.INTERNAL_SERVER_ERROR);

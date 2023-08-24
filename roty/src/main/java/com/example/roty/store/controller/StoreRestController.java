@@ -67,13 +67,13 @@ public class StoreRestController {
         return storeService.findByPlaceId(placeId);
     }
 
-    @PostMapping("/file")
-    public String uploadFile(@RequestParam("file") MultipartFile multipartFile, String nameFile, String placeId)
-            throws IOException, FirebaseAuthException {
-        if (multipartFile.isEmpty()) {
-            return "is empty";
-        }
-        return firebaseService.uploadFiles(multipartFile, nameFile, placeId);
-
-    }
+//    @PostMapping("/file")
+//    public String uploadFile(@RequestParam("file") MultipartFile multipartFile, String nameFile, String placeId)
+//            throws IOException, FirebaseAuthException {
+//        if (multipartFile.isEmpty()) {
+//            return "is empty";
+//        }
+//        return firebaseService.uploadFiles(multipartFile, nameFile, placeId);
+//
+//    }
 }
