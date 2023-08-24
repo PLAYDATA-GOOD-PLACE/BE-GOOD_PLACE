@@ -20,8 +20,9 @@ import java.util.List;
 public class ReviewService {
     private final ReviewRepository reviewRepository;
 
-    public List<Review> findAllReview() {
-        return reviewRepository.findAll();
+    public List<ReviewResponse> findAllReview(String id) {
+        List<Review> all = reviewRepository.findFetchAllByStoreId(id);
+        return all.stream().map(ReviewResponse::new).toList();
     }
 
     public void saveReview(ReviewRequest reviewRequest, Long userId, Long id) {
@@ -39,7 +40,7 @@ public class ReviewService {
     }
 
     private Review findById(Long reviewSeq) {
-        return reviewRepository.findById(reviewSeq).orElseThrow(() -> new RuntimeException());
+        return reviewRepository.findByReviewSeq(reviewSeq).orElseThrow(() -> new RuntimeException());
     }
 
 

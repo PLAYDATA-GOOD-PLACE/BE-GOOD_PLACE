@@ -18,9 +18,9 @@ import java.util.List;
 public class ReviewController {
     private final ReviewService reviewService;
 
-    @GetMapping
-    public List<Review> findAllReview() {
-        return reviewService.findAllReview();
+    @GetMapping("{id}")
+    public List<ReviewResponse> findAllReview(@PathVariable("id") String id) {
+        return reviewService.findAllReview(id);
     }
 
     @PostMapping("{userId}/{id}")

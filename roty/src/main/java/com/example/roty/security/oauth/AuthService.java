@@ -24,7 +24,7 @@ public class AuthService {
                 .claim("username", user.getUsername())
                 .claim("email",user.getEmail())
 
-                .setExpiration(new Date(System.currentTimeMillis() + 120_000))
+                .setExpiration(new Date(System.currentTimeMillis() + 120_000000))
                 .signWith(key)
                 .compact();
         return compact;
