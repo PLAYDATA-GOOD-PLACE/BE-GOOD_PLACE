@@ -1,6 +1,7 @@
 package com.example.roty.domain.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,7 +18,6 @@ import java.util.*;
 @NoArgsConstructor
 
 public class User implements UserDetails {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
@@ -28,12 +28,27 @@ public class User implements UserDetails {
 
     private String email;
 
-   //권한
+    //권한
     private String role;
 
     private String provider;
 
     private String providerId;
+
+    private String profilePath;
+
+    @OneToMany(mappedBy = "user")
+    private List<Recommend> recommends = new ArrayList<>();
+
+    @JsonIgnoreProperties("user")
+    @OneToMany(mappedBy = "user")
+    List<Favorite> favorites = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "user")
+//    List<Review> reviews = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "user")
+//    List<Comment> comments = new ArrayList<>();
 
     @Override
     public String getPassword() {
