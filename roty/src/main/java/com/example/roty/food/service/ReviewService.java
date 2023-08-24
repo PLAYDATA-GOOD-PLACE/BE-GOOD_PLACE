@@ -43,4 +43,8 @@ public class ReviewService {
     }
 
 
+    public Long getCount(String placeId) {
+
+        return reviewRepository.countByStore_PlaceId(placeId);
+    }
 }

@@ -10,6 +10,6 @@ public interface FavoriteRepository extends JpaRepository<Favorite,Long> {
     Favorite findByUser_UserIdAndStore_Id(Long userId,Long storeId);
 
 
-    Long countByStoreId(Long storeId);
+    Long countByStore_PlaceId(String placeId);
 
 }

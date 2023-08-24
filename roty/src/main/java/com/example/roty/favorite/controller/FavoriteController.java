@@ -22,8 +22,8 @@ public class FavoriteController {
         favoriteService.save(favoriteRequest);
     }
 
-    @GetMapping("{storeId}")
-    public Long getCount(@PathVariable(name = "storeId") Long storeId){
-        return favoriteService.getCount(storeId);
+    @GetMapping("{placeId}")
+    public Long getCount(@PathVariable(name = "placeId") String placeId){
+        return favoriteService.getCount(placeId);
     }
 }
