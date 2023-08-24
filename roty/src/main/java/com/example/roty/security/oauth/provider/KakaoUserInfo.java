@@ -8,16 +8,16 @@ import java.util.Map;
 //카카오를 받아낼 그릇이다.
 public class KakaoUserInfo implements Oauth2UserInfo {
 
-    private Map<String,Object> attributes;
+    private Map<String, Object> attributes;
     private Map<String, Object> attributesAccount;
-    private Map<String,Object> attributeProfile;
+    private Map<String, Object> attributeProfile;
 
     //데이터 정제
-    public  KakaoUserInfo(Map<String,Object> attributes){
+    public KakaoUserInfo(Map<String, Object> attributes) {
 
         System.out.println(attributes);
-        this.attributes=attributes;
-        this.attributesAccount = (Map<String, Object>)  attributes.get("kakao_account");
+        this.attributes = attributes;
+        this.attributesAccount = (Map<String, Object>) attributes.get("kakao_account");
         this.attributeProfile = (Map<String, Object>) attributesAccount.get("profile");
     }
 
@@ -33,11 +33,18 @@ public class KakaoUserInfo implements Oauth2UserInfo {
 
     @Override
     public String getEmail() {
+<<<<<<< HEAD
 
         if(attributesAccount.get("email")==null){
             return "null";
         }
         return   attributesAccount.get("email").toString();
+=======
+        if (attributesAccount.get("email") == null) {
+            return "null";
+        }
+        return attributesAccount.get("email").toString();
+>>>>>>> bb1612efb49cea81df9708afb3a7e70024d06807
     }
 
     @Override

@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -19,11 +21,19 @@ public class FirebaseService {
     @Value("${app.firebase-bucket}")
     private String firebaseBucket;
 
-    public String uploadFiles(MultipartFile multipartFile, String nameFile) throws IOException, FirebaseAuthException {
+    public List<String> uploadFiles(List<MultipartFile> multipartFiles, List<String> nameFiles, String placeId) throws IOException, FirebaseAuthException {
         Bucket bucket = StorageClient.getInstance().bucket(firebaseBucket);
-        InputStream content = new ByteArrayInputStream(multipartFile.getBytes());
-        Blob blob = bucket.create(nameFile.toString(), content, multipartFile.getContentType());
-        return blob.getMediaLink();
+        List<String> mediaLinks = new ArrayList<>();
 
+        for (int i = 0; i < multipartFiles.size(); i++) {
+            MultipartFile multipartFile = multipartFiles.get(i);
+            String nameFile = nameFiles.get(i);
+            InputStream content = new ByteArrayInputStream(multipartFile.getBytes());
+            String fullPath = placeId + "/" + nameFile; // Construct the desired path
+            Blob blob = bucket.create(fullPath, content, multipartFile.getContentType());
+            mediaLinks.add(blob.getMediaLink());
+        }
+
+        return mediaLinks;
     }
 }

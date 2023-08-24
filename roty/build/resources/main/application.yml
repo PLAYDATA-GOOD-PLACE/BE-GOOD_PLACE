@@ -1,8 +1,14 @@
 spring:
   datasource:
+<<<<<<< HEAD
     url: jdbc:mysql://localhost:3306/roty?serverTimezone=Asia/Seoul
     username: root
     password: 1q2w3e4r
+=======
+    url: jdbc:mysql://localhost:3306/place?serverTimezone=Asia/Seoul
+    username: root
+    password: qwer1234!
+>>>>>>> bb1612efb49cea81df9708afb3a7e70024d06807
   jpa:
     hibernate:
       ddl-auto: update
@@ -17,7 +23,7 @@ spring:
             client-secret: d9MPecFGz6wu2UA8jZMy008OjNewDXVt
             client-name: kakao
             authorization-grant-type: authorization_code
-#            추가수정
+            #            추가수정
             client-authentication-method: client_secret_post
             redirect-uri: http://localhost:8080/login/oauth2/code/kakao
         provider:

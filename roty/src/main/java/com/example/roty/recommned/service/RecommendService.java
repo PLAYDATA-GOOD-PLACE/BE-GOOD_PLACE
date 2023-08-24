@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
 public class RecommendService {
     private final RecommendRepository repository;
     private final StoreRepository storeRepository;
-    private final UserRepository userRepository;
 
     public void saveSelectedPlaces(Authentication authentication, String data, String reviews) {
         PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
