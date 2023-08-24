@@ -9,8 +9,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "comment")
+@Table(name = "comments")
 public class Comment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentSeq;
@@ -22,6 +23,7 @@ public class Comment {
     private User user;
 
     @ManyToOne
+    @JoinColumn(name = "review_seq")
     private Review review;
 
     public void update(String content) {

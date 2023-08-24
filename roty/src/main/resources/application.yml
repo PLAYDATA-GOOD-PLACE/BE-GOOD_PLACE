@@ -6,6 +6,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
     show-sql: true
 
   security:
@@ -28,6 +29,7 @@ spring:
             user-name-attribute: id
 jwt:
   secret: keqoeurpqieurpqemvzlkdfkqerpqieuria45eqkrekqmlr
+
 app:
   firebase-configuration-file: ./serviceAccountKey.json
   firebase-bucket: goodplace-2e350.appspot.com

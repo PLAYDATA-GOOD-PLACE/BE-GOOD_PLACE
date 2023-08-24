@@ -26,8 +26,8 @@ public class CommentService {
         return all.stream().map(CommentResponse::new).toList();
     }
 
-    public void saveComment(CommentRequest commentRequest) {
-        commentRepository.save(commentRequest.toEntity());
+    public void saveComment(CommentRequest commentRequest, Long userId, Long reviewSeq) {
+        commentRepository.save(commentRequest.toEntity(userId, reviewSeq));
     }
 
     public CommentResponse updateComment(Long commentSeq, CommentUpdateRequest commentUpdateRequest) {

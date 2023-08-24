@@ -23,9 +23,9 @@ public class CommentController {
         return commentService.findAllComment();
     }
 
-    @PostMapping()
-    public void saveComment(@RequestBody CommentRequest commentRequest) {
-        commentService.saveComment(commentRequest);
+    @PostMapping("{userId}/{reviewSeq}")
+    public void saveComment(@RequestBody CommentRequest commentRequest,  @PathVariable("userId") Long userId, @PathVariable("reviewSeq") Long reviewSeq) {
+        commentService.saveComment(commentRequest, userId, reviewSeq);
     }
 
     @PutMapping("{commentSeq}")

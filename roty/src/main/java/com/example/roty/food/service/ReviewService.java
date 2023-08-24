@@ -24,8 +24,8 @@ public class ReviewService {
         return reviewRepository.findAll();
     }
 
-    public void saveReview(ReviewRequest reviewRequest) {
-        reviewRepository.save(reviewRequest.toEntity());
+    public void saveReview(ReviewRequest reviewRequest, Long userId, Long id) {
+        reviewRepository.save(reviewRequest.toEntity(userId, id));
     }
 
     public ReviewResponse updateReview(Long reviewSeq, ReviewUpdateRequest reviewUpdateRequest) {
