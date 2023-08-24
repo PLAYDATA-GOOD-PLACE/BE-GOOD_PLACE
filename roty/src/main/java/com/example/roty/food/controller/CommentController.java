@@ -19,13 +19,13 @@ public class CommentController {
     private final CommentService commentService;
 
     @GetMapping
-    public List<Comment> findAllComment() {
+    public List<CommentResponse> findAllComment() {
         return commentService.findAllComment();
     }
 
-    @PostMapping()
-    public void saveComment(@RequestBody CommentRequest commentRequest) {
-        commentService.saveComment(commentRequest);
+    @PostMapping("{userId}/{reviewSeq}")
+    public void saveComment(@RequestBody CommentRequest commentRequest,  @PathVariable("userId") Long userId, @PathVariable("reviewSeq") Long reviewSeq) {
+        commentService.saveComment(commentRequest, userId, reviewSeq);
     }
 
     @PutMapping("{commentSeq}")

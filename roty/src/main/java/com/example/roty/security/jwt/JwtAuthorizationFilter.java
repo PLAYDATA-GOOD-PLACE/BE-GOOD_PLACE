@@ -20,13 +20,12 @@ import java.io.IOException;
 import java.util.Map;
 
 
-
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
-    @Value("${jwt.secret}")
-    private String secretKey;
+//    @Value("${jwt.secret}")
+//    private String secretKey;
 
-//    private String secretKey ="keqoeurpqieurpqemvzlkdfkqerpqieuria45eqkrekqmlriiutuytxkyxrzjtejrcjtrjvtjrb";
+    private String secretKey = "keqoeurpqieurpqemvzlkdfkqerpqieuria45eqkrekqmlr";
 
     private final UserRepository userRepository;
 
@@ -42,12 +41,12 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         String header = request.getHeader("Authorization");
 
         //토큰 없으면 무효
-        if(header == null || !header.startsWith("Bearer ")) {
+        if (header == null || !header.startsWith("Bearer ")) {
             chain.doFilter(request, response);
             return;
         }
 
-        System.out.println("header : "+header);
+        System.out.println("header : " + header);
         String token = request.getHeader("Authorization")
                 .replace("Bearer ", "");
 
@@ -56,15 +55,15 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 //        String username = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(token)
 //                .getClaim("username").asString();
 
-        Map<String,Object> claim= (Claims) Jwts.parserBuilder()
+        Map<String, Object> claim = (Claims) Jwts.parserBuilder()
                 .setSigningKey(secretKey.getBytes())
                 .build()
                 .parse(token)
                 .getBody();
 
-        String username=claim.get("username").toString();
+        String username = claim.get("username").toString();
 
-        if(username != null) {
+        if (username != null) {
             User user = userRepository.findByUsername(username);
 
             // 인증은 토큰 검증시 끝. 인증을 하기 위해서가 아닌 스프링 시큐리티가 수행해주는 권한 처리를 위해

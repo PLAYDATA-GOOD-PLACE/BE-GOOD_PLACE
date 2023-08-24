@@ -2,30 +2,41 @@ package com.example.roty.store.controller;
 
 
 import com.example.roty.domain.response.StoreResponse;
+import com.example.roty.store.service.FirebaseService;
 import com.example.roty.store.service.StoreService;
+import com.google.firebase.auth.FirebaseAuthException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/client")
 public class StoreRestController {
     private final StoreService storeService;
+    private final FirebaseService firebaseService;
 
     @CrossOrigin("*")
     @PostMapping("/submit-selected-places")
-    public ResponseEntity<String> submitSelectedPlaces(@RequestParam("selectedPlacesData") String selectedPlacesData) {
+    public ResponseEntity<String> submitSelectedPlaces(
+            @RequestParam("selectedPlacesData") String selectedPlacesData,
+            @RequestParam("reviews") String reviews) {
         try {
-            storeService.saveSelectedPlaces(selectedPlacesData);
+            storeService.saveSelectedPlaces(selectedPlacesData, reviews);
             return new ResponseEntity<>("Selected places submitted successfully.", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed to submit selected places.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 
     @GetMapping
     public Page<StoreResponse> getAll(
@@ -48,5 +59,21 @@ public class StoreRestController {
             String keyword
     ) {
         return storeService.findByAddressContains(PageRequest.of(page, size), keyword);
+    }
+
+
+    @GetMapping("/place/{id}")
+    public StoreResponse getAllByPlaceId(@PathVariable("id") String placeId) {
+        return storeService.findByPlaceId(placeId);
+    }
+
+    @PostMapping("/file")
+    public String uploadFile(@RequestParam("file") MultipartFile multipartFile, String nameFile)
+            throws IOException, FirebaseAuthException {
+        if (multipartFile.isEmpty()) {
+            return "is empty";
+        }
+        return firebaseService.uploadFiles(multipartFile, nameFile);
+
     }
 }

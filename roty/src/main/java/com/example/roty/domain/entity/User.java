@@ -15,6 +15,7 @@ import java.util.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class User implements UserDetails {
 
     @Id
@@ -85,4 +86,9 @@ public class User implements UserDetails {
         return collet;
     }
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Review> reviews;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Comment> comments;
 }

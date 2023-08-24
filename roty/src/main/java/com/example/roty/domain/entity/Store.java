@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 public class Store {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String placeId;
     private String name;
@@ -24,6 +24,8 @@ public class Store {
     private String phone;
     private String foodType;
     private String storeImgUrl;
+    @Column(columnDefinition = "TEXT")
+    private String myReview;
     @Column(name = "coordinate_x")
     private String coordinateX;
     @Column(name = "coordinate_y")
@@ -32,4 +34,7 @@ public class Store {
     private List<Recommend> users;
     @OneToMany(mappedBy = "store")
     private List<Favorite> favorites;
+
+    @OneToMany(mappedBy = "store")
+    private List<Review> reviews;
 }

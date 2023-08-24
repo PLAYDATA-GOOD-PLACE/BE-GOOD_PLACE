@@ -10,6 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 public interface StoreRepository extends JpaRepository<Store, Long> {
     boolean existsByPlaceId(String id);
 
+    Store findAllByPlaceId(String id);
+
     Page<Store> findAll(Pageable request);
 
     @Query("select s from Store s where s.address like %:keyword%")

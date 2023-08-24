@@ -23,9 +23,9 @@ public class ReviewController {
         return reviewService.findAllReview();
     }
 
-    @PostMapping
-    public void saveReview(@RequestBody ReviewRequest reviewRequest) {
-        reviewService.saveReview(reviewRequest);
+    @PostMapping("{userId}/{id}")
+    public void saveReview(@RequestBody ReviewRequest reviewRequest , @PathVariable("userId") Long userId ,@PathVariable("id") Long id) {
+        reviewService.saveReview(reviewRequest, userId, id);
     }
 
     @PutMapping("{reviewSeq}")

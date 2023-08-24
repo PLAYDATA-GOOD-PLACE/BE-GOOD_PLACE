@@ -1,24 +1,29 @@
-package com.example.roty.store.service;
+package com.example.roty.recommned.service;
 
+import com.example.roty.User.repository.UserRepository;
+import com.example.roty.domain.entity.Recommend;
 import com.example.roty.domain.entity.Store;
-import com.example.roty.domain.response.StoreResponse;
+import com.example.roty.domain.entity.User;
+import com.example.roty.recommned.repository.RecommendRepository;
+import com.example.roty.security.oauth.PrincipalDetails;
 import com.example.roty.store.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class StoreService {
+public class RecommendService {
+    private final RecommendRepository repository;
     private final StoreRepository storeRepository;
+    private final UserRepository userRepository;
 
-    public void saveSelectedPlaces(String data, String reviews) {
+    public void saveSelectedPlaces(Authentication authentication, String data, String reviews) {
+        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
 
         JSONParser parser = new JSONParser();
         try {
@@ -36,11 +41,14 @@ public class StoreService {
                         .storeImgUrl((String) dataJson.get("place_url"))
                         .coordinateX((String) dataJson.get("x"))
                         .coordinateY((String) dataJson.get("y"))
-                        .myReview(reviews) // Set the reviews value
+                        .myReview(reviews)
                         .build();
 
                 if (!storeRepository.existsByPlaceId(store.getPlaceId())) {
-                    storeRepository.save(store);
+                    User user = principal.getUser();
+                    Store save = storeRepository.save(store);
+                    Recommend recommend = new Recommend(null, user, save);
+                    repository.save(recommend);
                 } else {
                     throw new RuntimeException("STORE WITH PLACE ID ALREADY EXISTS.");
                 }
@@ -50,21 +58,4 @@ public class StoreService {
             throw new RuntimeException("FAILED TO PARSE DATA.");
         }
     }
-
-
-    public Page<StoreResponse> findAll(PageRequest request) {
-        Page<Store> all = storeRepository.findAll(request);
-        return all.map(StoreResponse::new);
-    }
-
-    public Page<StoreResponse> findByAddressContains(PageRequest request, String keyword) {
-        Page<Store> all = storeRepository.findAllByAddressContaining(request, keyword);
-        return all.map(StoreResponse::new);
-    }
-    
-    public StoreResponse findByPlaceId(String placeId) {
-        Store store = storeRepository.findAllByPlaceId(placeId);
-        return new StoreResponse(store);
-    }
-
 }
