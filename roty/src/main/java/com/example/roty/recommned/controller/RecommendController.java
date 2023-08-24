@@ -2,11 +2,13 @@ package com.example.roty.recommned.controller;
 
 import com.example.roty.recommned.service.RecommendService;
 import com.example.roty.security.oauth.PrincipalDetails;
+import com.example.roty.store.service.FirebaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -14,14 +16,18 @@ import org.springframework.web.bind.annotation.*;
 public class RecommendController {
 
     private final RecommendService recommendService;
+    private final FirebaseService firebaseService;
 
     @CrossOrigin("*")
     @PostMapping("/submit-selected-places")
     public ResponseEntity<String> submitSelectedPlaces(Authentication authentication,
                                                        @RequestParam("selectedPlacesData") String selectedPlacesData,
-                                                       @RequestParam("reviews") String reviews) {
+                                                       @RequestParam("reviews") String reviews,
+                                                       @RequestParam("file") MultipartFile multipartFile, String nameFile,
+                                                       @RequestParam("placeId") String placeId) {
         try {
             recommendService.saveSelectedPlaces(authentication, selectedPlacesData, reviews);
+            firebaseService.uploadFiles(multipartFile, placeId, nameFile);
             return new ResponseEntity<>("Selected places submitted successfully.", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed to submit selected places.", HttpStatus.INTERNAL_SERVER_ERROR);

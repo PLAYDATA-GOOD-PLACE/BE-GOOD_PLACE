@@ -19,10 +19,11 @@ public class FirebaseService {
     @Value("${app.firebase-bucket}")
     private String firebaseBucket;
 
-    public String uploadFiles(MultipartFile multipartFile, String nameFile) throws IOException, FirebaseAuthException {
+    public String uploadFiles(MultipartFile multipartFile, String nameFile, String placeId) throws IOException, FirebaseAuthException {
         Bucket bucket = StorageClient.getInstance().bucket(firebaseBucket);
         InputStream content = new ByteArrayInputStream(multipartFile.getBytes());
-        Blob blob = bucket.create(nameFile.toString(), content, multipartFile.getContentType());
+        String fullPath = nameFile.toString() + "/" + nameFile; // Construct the desired path
+        Blob blob = bucket.create(fullPath, content, multipartFile.getContentType());
         return blob.getMediaLink();
 
     }

@@ -17,19 +17,20 @@ public class AuthService {
     @Value("${jwt.secret}")
     private String secretKey;
 
-    public String makeToken(User user){
+    public String makeToken(User user) {
         SecretKeySpec key = getKey();
         String compact = Jwts.builder()
                 .claim("memberId", user.getUserId())
                 .claim("username", user.getUsername())
-                .claim("email",user.getEmail())
+                .claim("email", user.getEmail())
 
-                .setExpiration(new Date(System.currentTimeMillis() + 120_000))
+                .setExpiration(new Date(System.currentTimeMillis() + 120_000000))
                 .signWith(key)
                 .compact();
         return compact;
     }
-    public Map<String, Object> getClaims(String token){
+
+    public Map<String, Object> getClaims(String token) {
 //        SecretKeySpec key = getKey();
 
         return (Claims) Jwts.parserBuilder()

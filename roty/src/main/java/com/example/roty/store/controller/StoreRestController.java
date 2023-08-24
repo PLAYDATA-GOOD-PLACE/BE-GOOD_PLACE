@@ -68,12 +68,12 @@ public class StoreRestController {
     }
 
     @PostMapping("/file")
-    public String uploadFile(@RequestParam("file") MultipartFile multipartFile, String nameFile)
+    public String uploadFile(@RequestParam("file") MultipartFile multipartFile, String nameFile, String placeId)
             throws IOException, FirebaseAuthException {
         if (multipartFile.isEmpty()) {
             return "is empty";
         }
-        return firebaseService.uploadFiles(multipartFile, nameFile);
+        return firebaseService.uploadFiles(multipartFile, nameFile, placeId);
 
     }
 }
