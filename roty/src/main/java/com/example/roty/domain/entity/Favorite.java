@@ -1,5 +1,6 @@
 package com.example.roty.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,9 +18,12 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long favorite_id;
 
+
+    @JsonIgnoreProperties("favorites")
     @ManyToOne
     private User user;
 
+    @JsonIgnoreProperties("favorites")
     @ManyToOne
     private Store store;
 

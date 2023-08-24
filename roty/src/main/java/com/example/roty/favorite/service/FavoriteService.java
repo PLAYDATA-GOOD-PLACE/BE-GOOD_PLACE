@@ -2,10 +2,12 @@ package com.example.roty.favorite.service;
 
 import com.example.roty.domain.entity.Favorite;
 import com.example.roty.domain.request.FavoriteRequest;
+import com.example.roty.domain.response.StoryResponse;
 import com.example.roty.favorite.repository.FavoriteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,6 +34,11 @@ public class FavoriteService {
     public Long getCount(String storeId){
        return favoriteRepository.countByStore_PlaceId(storeId);
     }
+
+    public List<StoryResponse> getAllFavList(){
+        return favoriteRepository.customAllGroup();
+    }
+
 
     public Optional<Favorite> find(Long id){
 
