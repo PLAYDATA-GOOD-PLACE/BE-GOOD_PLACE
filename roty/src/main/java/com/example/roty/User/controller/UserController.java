@@ -70,8 +70,6 @@ public class UserController {
     @ResponseBody
     @GetMapping("/tokenInfo")
     public Map<String,Object> getToken(@RequestHeader("Authorization") String token){
-
-
             return authService.getClaims(token.replace("Bearer ",""));
     }
 

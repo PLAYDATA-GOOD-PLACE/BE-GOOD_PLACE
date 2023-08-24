@@ -80,10 +80,9 @@ public class Oauth2UserService extends DefaultOAuth2UserService {
                     .role("ROLE_USER")
                     .provider(oAuth2UserInfo.getProvider())
                     .providerId(oAuth2UserInfo.getProviderId())
+                    .profilePath(oAuth2UserInfo.profilePath())
                     .build();
             userRepository.save(user);
-
-
 
         }
 

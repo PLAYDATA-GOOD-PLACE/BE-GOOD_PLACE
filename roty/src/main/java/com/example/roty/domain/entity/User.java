@@ -1,10 +1,7 @@
 package com.example.roty.domain.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -36,6 +33,20 @@ public class User implements UserDetails {
     private String provider;
 
     private String providerId;
+
+    private String profilePath;
+
+    @OneToMany
+    private List<Recommend> recommends = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    List<Favorite> favorites = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "user")
+//    List<Review> reviews = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "user")
+//    List<Comment> comments = new ArrayList<>();
 
     @Override
     public String getPassword() {

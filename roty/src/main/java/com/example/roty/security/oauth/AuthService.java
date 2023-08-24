@@ -23,7 +23,7 @@ public class AuthService {
                 .claim("memberId", user.getUserId())
                 .claim("username", user.getUsername())
                 .claim("email",user.getEmail())
-
+                .claim("profliePath",user.getProfilePath())
                 .setExpiration(new Date(System.currentTimeMillis() + 120_000))
                 .signWith(key)
                 .compact();
@@ -31,7 +31,6 @@ public class AuthService {
     }
     public Map<String, Object> getClaims(String token){
 //        SecretKeySpec key = getKey();
-
         return (Claims) Jwts.parserBuilder()
                 .setSigningKey(secretKey.getBytes())
                 .build()
