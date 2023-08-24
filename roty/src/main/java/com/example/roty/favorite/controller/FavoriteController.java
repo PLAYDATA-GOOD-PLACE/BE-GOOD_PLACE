@@ -5,22 +5,25 @@ import com.example.roty.domain.request.FavoriteRequest;
 import com.example.roty.favorite.service.FavoriteService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("favorite")
 public class FavoriteController {
 
 
     private final FavoriteService favoriteService;
 
-    @PostMapping("favorite")
+    @PostMapping
     public void saveFav(@RequestBody FavoriteRequest favoriteRequest){
 
 
         favoriteService.save(favoriteRequest);
+    }
+
+    @GetMapping("{storeId}")
+    public Long getCount(@PathVariable(name = "storeId") Long storeId){
+        return favoriteService.getCount(storeId);
     }
 }

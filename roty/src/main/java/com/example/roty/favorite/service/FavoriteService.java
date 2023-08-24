@@ -29,6 +29,10 @@ public class FavoriteService {
         favoriteRepository.save(entity);
     }
 
+    public Long getCount(Long storeId){
+       return favoriteRepository.countByStoreId(storeId);
+    }
+
     public Optional<Favorite> find(Long id){
 
         return favoriteRepository.findById(id);
