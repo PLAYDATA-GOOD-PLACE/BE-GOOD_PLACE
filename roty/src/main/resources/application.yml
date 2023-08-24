@@ -5,7 +5,7 @@ spring:
     password: 1q2w3e4r
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     show-sql: true
 
   security:
@@ -31,4 +31,6 @@ jwt:
 
 
 
-
+app:
+  firebase-configuration-file: ./serviceAccountKey.json
+  firebase-bucket: goodplace-2e350.appspot.com

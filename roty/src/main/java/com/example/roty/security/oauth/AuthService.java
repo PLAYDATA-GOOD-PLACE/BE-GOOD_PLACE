@@ -23,7 +23,7 @@ public class AuthService {
                 .claim("memberId", user.getUserId())
                 .claim("username", user.getUsername())
                 .claim("email",user.getEmail())
-                .claim("profliePath",user.getProfilePath())
+                .claim("profilePath",user.getProfilePath())
                 .setExpiration(new Date(System.currentTimeMillis() + 120_000))
                 .signWith(key)
                 .compact();

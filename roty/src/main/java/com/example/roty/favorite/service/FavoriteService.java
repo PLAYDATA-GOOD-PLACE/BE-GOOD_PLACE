@@ -1,6 +1,7 @@
 package com.example.roty.favorite.service;
 
 import com.example.roty.domain.entity.Favorite;
+import com.example.roty.domain.request.FavoriteRequest;
 import com.example.roty.favorite.repository.FavoriteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,18 @@ public class FavoriteService {
     private final FavoriteRepository favoriteRepository;
 
 
-    public void create(Favorite f){
+    public void save(FavoriteRequest favoriteRequest){
 
-        favoriteRepository.save(f);
+        //중복 체크
+        if(favoriteRepository.findByUser_UserIdAndStore_Id(
+                favoriteRequest.getUserId(), favoriteRequest.getStoreId()
+        )!=null){
+            return;
+        }
+
+        Favorite entity = favoriteRequest.toEntity(favoriteRequest.getUserId(), favoriteRequest.getStoreId());
+
+        favoriteRepository.save(entity);
     }
 
     public Optional<Favorite> find(Long id){

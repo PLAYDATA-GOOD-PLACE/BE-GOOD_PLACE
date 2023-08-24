@@ -37,7 +37,7 @@ public class User implements UserDetails {
 
     private String profilePath;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<Recommend> recommends = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
