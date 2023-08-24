@@ -33,27 +33,14 @@ public class KakaoUserInfo implements Oauth2UserInfo {
 
     @Override
     public String getEmail() {
-<<<<<<< HEAD
-
-        if(attributesAccount.get("email")==null){
-            return "null";
-        }
-        return   attributesAccount.get("email").toString();
-=======
         if (attributesAccount.get("email") == null) {
             return "null";
         }
         return attributesAccount.get("email").toString();
->>>>>>> bb1612efb49cea81df9708afb3a7e70024d06807
     }
 
     @Override
     public String getName() {
         return attributeProfile.get("nickname").toString();
-    }
-
-    @Override
-    public String profilePath() {
-        return attributeProfile.get("profile_image_url").toString();
     }
 }

@@ -22,15 +22,9 @@ public class AuthService {
         String compact = Jwts.builder()
                 .claim("memberId", user.getUserId())
                 .claim("username", user.getUsername())
-<<<<<<< HEAD
-                .claim("email",user.getEmail())
-                .claim("profilePath",user.getProfilePath())
-                .setExpiration(new Date(System.currentTimeMillis() + 120_000))
-=======
                 .claim("email", user.getEmail())
 
                 .setExpiration(new Date(System.currentTimeMillis() + 120_000000))
->>>>>>> bb1612efb49cea81df9708afb3a7e70024d06807
                 .signWith(key)
                 .compact();
         return compact;
@@ -38,6 +32,7 @@ public class AuthService {
 
     public Map<String, Object> getClaims(String token) {
 //        SecretKeySpec key = getKey();
+
         return (Claims) Jwts.parserBuilder()
                 .setSigningKey(secretKey.getBytes())
                 .build()

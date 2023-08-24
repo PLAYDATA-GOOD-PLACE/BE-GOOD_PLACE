@@ -11,9 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-    Optional<Review> findById(Long reviewSeq);
-
-    Long countByStore_PlaceId(String placeId);
     @Query("SELECT r from Review as r " +
             "join r.user as u on r.user.userId = u.userId  WHERE r.store.placeId =:id")
     List<Review> findFetchAllByStoreId(@Param("id") String id );
