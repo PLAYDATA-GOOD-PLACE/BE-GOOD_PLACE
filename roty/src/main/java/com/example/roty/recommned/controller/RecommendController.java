@@ -1,5 +1,6 @@
 package com.example.roty.recommned.controller;
 
+import com.example.roty.domain.entity.Store;
 import com.example.roty.recommned.service.RecommendService;
 import com.example.roty.security.oauth.PrincipalDetails;
 import com.example.roty.store.service.FirebaseService;
@@ -37,4 +38,5 @@ public class RecommendController {
             return new ResponseEntity<>("Failed to submit selected places.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 }

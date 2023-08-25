@@ -15,6 +15,8 @@ import org.json.simple.parser.ParseException;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RecommendService {
@@ -57,5 +59,6 @@ public class RecommendService {
             throw new RuntimeException("FAILED TO PARSE DATA.");
         }
     }
+
 
 }
