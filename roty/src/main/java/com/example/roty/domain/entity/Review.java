@@ -1,5 +1,6 @@
 package com.example.roty.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,9 +30,11 @@ public class Review {
         this.content = content;
     }
 
+    @JsonIgnoreProperties("review")
     @OneToMany(mappedBy = "review", fetch = FetchType.LAZY)
     private List<Comment> comments;
 
+    @JsonIgnoreProperties("reviews")
     @ManyToOne
     private Store store;
 }

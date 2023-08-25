@@ -1,5 +1,6 @@
 package com.example.roty.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,9 +20,11 @@ public class Comment {
     private String content; //댓글 내용
 
     @ManyToOne
+    @JsonIgnoreProperties("user")
     @JoinColumn(name = "userId")
     private User user;
 
+    @JsonIgnoreProperties("comments")
     @ManyToOne
     @JoinColumn(name = "review_seq")
     private Review review;

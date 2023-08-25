@@ -1,5 +1,7 @@
 package com.example.roty.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,11 +32,16 @@ public class Store {
     private String coordinateX;
     @Column(name = "coordinate_y")
     private String coordinateY;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "store")
     private List<Recommend> users;
+
+    @JsonIgnoreProperties("store")
     @OneToMany(mappedBy = "store")
     private List<Favorite> favorites;
 
+    @JsonIgnoreProperties("store")
     @OneToMany(mappedBy = "store")
     private List<Review> reviews;
 }

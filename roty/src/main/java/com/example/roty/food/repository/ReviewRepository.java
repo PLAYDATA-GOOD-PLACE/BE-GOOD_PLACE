@@ -11,23 +11,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> feature/th4
+
     @Query("SELECT r from Review as r " +
             "join r.user as u on r.user.userId = u.userId  WHERE r.store.placeId =:id")
     List<Review> findFetchAllByStoreId(@Param("id") String id );
     Optional<Review> findByReviewSeq(Long reviewSeq);
-<<<<<<< HEAD
-=======
+
     Optional<Review> findById(Long reviewSeq);
 
     Long countByStore_PlaceId(String placeId);
->>>>>>> feature/th3
-=======
 
-    Long countByStore_PlaceId(String placeId);
->>>>>>> feature/th4
 }
 

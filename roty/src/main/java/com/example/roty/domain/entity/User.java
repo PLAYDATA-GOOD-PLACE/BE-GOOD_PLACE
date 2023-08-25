@@ -1,6 +1,7 @@
 package com.example.roty.domain.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
@@ -38,6 +39,7 @@ public class User implements UserDetails {
 
     private String profilePath;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Recommend> recommends = new ArrayList<>();
 
