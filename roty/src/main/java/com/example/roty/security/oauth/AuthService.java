@@ -25,6 +25,7 @@ public class AuthService {
                 .claim("email", user.getEmail())
 
                 .setExpiration(new Date(System.currentTimeMillis() + 120_000000))
+
                 .signWith(key)
                 .compact();
         return compact;
@@ -32,7 +33,6 @@ public class AuthService {
 
     public Map<String, Object> getClaims(String token) {
 //        SecretKeySpec key = getKey();
-
         return (Claims) Jwts.parserBuilder()
                 .setSigningKey(secretKey.getBytes())
                 .build()

@@ -1,5 +1,6 @@
 spring:
   datasource:
+<<<<<<< HEAD
     url: jdbc:mysql://localhost:3306/place?serverTimezone=Asia/Seoul
     username: root
     password: qwer1234!
@@ -7,6 +8,14 @@ spring:
     hibernate:
       ddl-auto: none
 
+=======
+    url: jdbc:mysql://localhost:3306/roty?serverTimezone=Asia/Seoul
+    username: root
+    password: 1q2w3e4r
+  jpa:
+    hibernate:
+      ddl-auto: update
+>>>>>>> feature/th3
     show-sql: true
 
   security:
@@ -30,9 +39,8 @@ spring:
 jwt:
   secret: keqoeurpqieurpqemvzlkdfkqerpqieuria45eqkrekqmlr
 
+
+
 app:
   firebase-configuration-file: ./serviceAccountKey.json
   firebase-bucket: goodplace-2e350.appspot.com
-
-
-

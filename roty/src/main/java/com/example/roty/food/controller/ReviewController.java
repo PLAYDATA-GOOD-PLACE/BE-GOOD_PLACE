@@ -37,4 +37,9 @@ public class ReviewController {
     public void deleteReview(@PathVariable("reviewSeq") Long reviewSeq) {
         reviewService.deleteReview(reviewSeq);
     }
+
+    @GetMapping("{placeId}")
+    public Long getCount(@PathVariable(name = "placeId") String placeId){
+        return reviewService.getCount(placeId);
+    }
 }

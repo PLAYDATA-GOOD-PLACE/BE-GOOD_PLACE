@@ -43,4 +43,6 @@ public class CommentService {
     private Comment findById(Long commentSeq) {
         return commentRepository.findById(commentSeq).orElseThrow(() -> new RuntimeException());
     }
+
+
 }

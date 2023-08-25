@@ -75,10 +75,10 @@ public class UserController {
     //토큰으로 꺼내서 받아보기
     @ResponseBody
     @GetMapping("/tokenInfo")
+
     public Map<String, Object> getToken(@RequestHeader("Authorization") String token) {
-
-
         return authService.getClaims(token.replace("Bearer ", ""));
+
     }
 
 
