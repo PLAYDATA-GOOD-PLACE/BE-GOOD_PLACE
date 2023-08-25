@@ -1,6 +1,7 @@
 spring:
   datasource:
 <<<<<<< HEAD
+<<<<<<< HEAD
     url: jdbc:mysql://localhost:3306/place?serverTimezone=Asia/Seoul
     username: root
     password: qwer1234!
@@ -9,6 +10,8 @@ spring:
       ddl-auto: none
 
 =======
+=======
+>>>>>>> feature/th4
     url: jdbc:mysql://localhost:3306/roty?serverTimezone=Asia/Seoul
     username: root
     password: 1q2w3e4r

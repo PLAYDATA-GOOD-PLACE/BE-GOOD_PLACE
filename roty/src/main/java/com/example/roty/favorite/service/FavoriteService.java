@@ -35,7 +35,7 @@ public class FavoriteService {
        return favoriteRepository.countByStore_PlaceId(storeId);
     }
 
-    public List<StoryResponse> getAllFavList(){
+    public Object[] getAllFavList(){
         return favoriteRepository.customAllGroup();
     }
 
