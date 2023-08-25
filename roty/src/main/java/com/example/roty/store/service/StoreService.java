@@ -61,7 +61,7 @@ public class StoreService {
         Page<Store> all = storeRepository.findAllByAddressContaining(request, keyword);
         return all.map(StoreResponse::new);
     }
-    
+
     public StoreResponse findByPlaceId(String placeId) {
         Store store = storeRepository.findAllByPlaceId(placeId);
         return new StoreResponse(store);

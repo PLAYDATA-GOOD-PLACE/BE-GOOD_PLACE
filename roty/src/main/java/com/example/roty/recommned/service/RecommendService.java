@@ -57,4 +57,5 @@ public class RecommendService {
             throw new RuntimeException("FAILED TO PARSE DATA.");
         }
     }
+
 }

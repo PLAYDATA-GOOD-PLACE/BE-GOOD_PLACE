@@ -12,6 +12,7 @@ public interface StoreRepository extends JpaRepository<Store, Long> {
 
     Store findAllByPlaceId(String id);
 
+
     Page<Store> findAll(Pageable request);
 
     @Query("select s from Store s where s.address like %:keyword%")
