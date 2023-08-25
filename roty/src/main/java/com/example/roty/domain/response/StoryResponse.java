@@ -11,6 +11,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class StoryResponse {
 
-    private String username;
+    private Long userId;
+//    private String username;
     private Long count;
+    private Long storeCount;
 }

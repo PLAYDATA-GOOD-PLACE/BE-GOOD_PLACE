@@ -16,7 +16,13 @@ public interface FavoriteRepository extends JpaRepository<Favorite,Long> {
     Long countByStore_PlaceId(String placeId);
 
 
-    @Query("SELECT NEW com.example.roty.domain.response.StoryResponse(f.user.username, COUNT(*)) FROM Favorite as f GROUP BY f.user.userId ORDER BY count(*) DESC")
-    List<StoryResponse> customAllGroup();
 
+    @Query(value = " SELECT user_user_id as fs,username ,COUNT(*),\n" +
+            "(select count(*) from favorite where favorite.store_id in(select store_id from favorite where user_user_id =fs))\n" +
+            " FROM Favorite as f\n" +
+            " join user u on u.user_id = f.user_user_id\n" +
+            " GROUP BY user_user_id\n" +
+            " ORDER BY count(*) DESC;"
+    ,nativeQuery = true)
+    Object[] customAllGroup();
 }

@@ -34,7 +34,6 @@ public class KakaoUserInfo implements Oauth2UserInfo {
     @Override
     public String getEmail() {
 
-
         if (attributesAccount.get("email") == null) {
             return "null";
         }
@@ -49,6 +48,6 @@ public class KakaoUserInfo implements Oauth2UserInfo {
 
     @Override
     public String profilePath() {
-        return attributeProfile.get("profile_image_url").toString();
+        return null;
     }
 }

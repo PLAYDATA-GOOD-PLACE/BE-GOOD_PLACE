@@ -32,7 +32,7 @@ public class FavoriteController {
     }
 
     @GetMapping
-    public List<StoryResponse> getAllGroup(){
+    public Object[] getAllGroup(){
         return favoriteService.getAllFavList();
     }
 }
