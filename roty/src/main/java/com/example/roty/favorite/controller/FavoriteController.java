@@ -20,24 +20,24 @@ public class FavoriteController {
     private final FavoriteService favoriteService;
 
     @PostMapping
-    public void saveFav(@RequestBody FavoriteRequest favoriteRequest){
+    public void saveFav(@RequestBody FavoriteRequest favoriteRequest) {
 
 
         favoriteService.save(favoriteRequest);
     }
 
     @GetMapping("{placeId}")
-    public Long getCount(@PathVariable(name = "placeId") String placeId){
+    public Long getCount(@PathVariable(name = "placeId") String placeId) {
         return favoriteService.getCount(placeId);
     }
 
     @GetMapping
-    public Object[] getAllGroup(){
+    public Object[] getAllGroup() {
         return favoriteService.getAllFavList();
     }
 
     @GetMapping("/user/{userId}")
-    public List<Favorite> getAllByUserId(@PathVariable("userId") Long userId){
+    public List<Favorite> getAllByUserId(@PathVariable("userId") Long userId) {
 
         return favoriteService.findAllByUserId(userId);
     }

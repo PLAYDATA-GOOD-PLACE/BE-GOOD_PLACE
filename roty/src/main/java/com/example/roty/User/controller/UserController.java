@@ -62,7 +62,7 @@ public class UserController {
         String token = authService.makeToken(principal.getUser());
         Long userId = principal.getUser().getUserId();
 
-        return "redirect:http://localhost:3000/redirect?token=" + token + "&userId=" + userId;
+        return "redirect:http://192.168.0.172:3000/redirect?token=" + token + "&userId=" + userId;
     }
 
 
