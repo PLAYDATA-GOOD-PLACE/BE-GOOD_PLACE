@@ -1,9 +1,9 @@
 package com.example.roty.recommned.service;
 
-import com.example.roty.User.repository.UserRepository;
 import com.example.roty.domain.entity.Recommend;
 import com.example.roty.domain.entity.Store;
 import com.example.roty.domain.entity.User;
+import com.example.roty.domain.response.RecommendResponse;
 import com.example.roty.recommned.repository.RecommendRepository;
 import com.example.roty.security.oauth.PrincipalDetails;
 import com.example.roty.store.repository.StoreRepository;
@@ -60,8 +60,10 @@ public class RecommendService {
         }
     }
 
-    public List<Recommend> findById(Long id) {
+    public List<RecommendResponse> findById(Long id) {
 
-        return repository.findAllByUser_UserId(id);
+        List<Recommend> list = repository.findAllByUser_UserId(id);
+
+        return list.stream().map(RecommendResponse::new).toList();
     }
 }

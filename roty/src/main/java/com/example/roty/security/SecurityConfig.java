@@ -53,9 +53,9 @@ public class SecurityConfig  {
                         u.userService(new Oauth2UserService(userRepository,authenticationManager)))
                         .loginPage("http://localhost:8080/oauth2/authorization/kakao")
                         .defaultSuccessUrl("/token")
+
                 )
                 .addFilter(new JwtAuthorizationFilter(authenticationManager, userRepository))
-
 
 //                .addFilter(new JwtAuthenticationFilter(authenticationManager))
 //                .addFilter(new JwtAuthorizationFilter(authenticationManager))

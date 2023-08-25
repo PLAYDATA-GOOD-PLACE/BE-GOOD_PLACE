@@ -35,4 +35,11 @@ public class FavoriteController {
     public Object[] getAllGroup(){
         return favoriteService.getAllFavList();
     }
+
+    @GetMapping("/user/{userId}")
+    public List<Favorite> getAllByUserId(@PathVariable("userId") Long userId){
+
+        return favoriteService.findAllByUserId(userId);
+    }
+
 }

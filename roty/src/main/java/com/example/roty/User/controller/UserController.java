@@ -6,11 +6,18 @@ import com.example.roty.User.service.UserService;
 import com.example.roty.security.oauth.AuthService;
 import com.example.roty.security.oauth.PrincipalDetails;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Map;
 
@@ -80,6 +87,5 @@ public class UserController {
         return authService.getClaims(token.replace("Bearer ", ""));
 
     }
-
 
 }

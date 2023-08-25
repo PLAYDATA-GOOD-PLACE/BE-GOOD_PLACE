@@ -49,4 +49,8 @@ public class FavoriteService {
         favoriteRepository.deleteById(id);
     }
 
+    public List<Favorite> findAllByUserId(Long userId){
+        return favoriteRepository.findAllByUser_UserId(userId);
+    }
+
 }
