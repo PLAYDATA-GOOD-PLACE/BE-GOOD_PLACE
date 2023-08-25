@@ -15,5 +15,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
             "join r.user as u on r.user.userId = u.userId  WHERE r.store.placeId =:id")
     List<Review> findFetchAllByStoreId(@Param("id") String id );
     Optional<Review> findByReviewSeq(Long reviewSeq);
+
+    Long countByStore_PlaceId(String placeId);
 }
 

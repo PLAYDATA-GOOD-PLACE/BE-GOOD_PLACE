@@ -1,14 +1,8 @@
 spring:
   datasource:
-<<<<<<< HEAD
     url: jdbc:mysql://localhost:3306/roty?serverTimezone=Asia/Seoul
     username: root
     password: 1q2w3e4r
-=======
-    url: jdbc:mysql://localhost:3306/place?serverTimezone=Asia/Seoul
-    username: root
-    password: qwer1234!
->>>>>>> bb1612efb49cea81df9708afb3a7e70024d06807
   jpa:
     hibernate:
       ddl-auto: update
