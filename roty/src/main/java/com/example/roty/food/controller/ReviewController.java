@@ -24,7 +24,7 @@ public class ReviewController {
     }
 
     @PostMapping("{userId}/{id}")
-    public void saveReview(@RequestBody ReviewRequest reviewRequest , @PathVariable("userId") Long userId ,@PathVariable("id") Long id) {
+    public void saveReview(@RequestBody ReviewRequest reviewRequest, @PathVariable("userId") Long userId, @PathVariable("id") Long id) {
         reviewService.saveReview(reviewRequest, userId, id);
     }
 
@@ -38,8 +38,8 @@ public class ReviewController {
         reviewService.deleteReview(reviewSeq);
     }
 
-    @GetMapping("{placeId}")
-    public Long getCount(@PathVariable(name = "placeId") String placeId){
+    @GetMapping("/count/{placeId}")
+    public Long getCount(@PathVariable(name = "placeId") String placeId) {
         return reviewService.getCount(placeId);
     }
 }
