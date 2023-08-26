@@ -51,7 +51,7 @@ public class SecurityConfig {
                 .oauth2Login(oauth ->
                         oauth.userInfoEndpoint((u) ->
                                         u.userService(new Oauth2UserService(userRepository, authenticationManager)))
-                                .loginPage("http://192.168.0.172:8080/oauth2/authorization/kakao")
+                                .loginPage("http://localhost:8080/oauth2/authorization/kakao")
                                 .defaultSuccessUrl("/token")
 
                 )
