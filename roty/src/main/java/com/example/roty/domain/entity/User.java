@@ -43,7 +43,7 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Recommend> recommends = new ArrayList<>();
 
-    @JsonIgnoreProperties("user")
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     List<Favorite> favorites = new ArrayList<>();
 //

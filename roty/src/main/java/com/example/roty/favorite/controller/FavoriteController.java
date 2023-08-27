@@ -3,6 +3,7 @@ package com.example.roty.favorite.controller;
 
 import com.example.roty.domain.entity.Favorite;
 import com.example.roty.domain.request.FavoriteRequest;
+import com.example.roty.domain.response.FavoriteResponse;
 import com.example.roty.domain.response.StoryResponse;
 import com.example.roty.favorite.service.FavoriteService;
 import lombok.AllArgsConstructor;
@@ -37,7 +38,7 @@ public class FavoriteController {
     }
 
     @GetMapping("/user/{userId}")
-    public List<Favorite> getAllByUserId(@PathVariable("userId") Long userId) {
+    public List<FavoriteResponse> getAllByUserId(@PathVariable("userId") Long userId) {
 
         return favoriteService.findAllByUserId(userId);
     }
