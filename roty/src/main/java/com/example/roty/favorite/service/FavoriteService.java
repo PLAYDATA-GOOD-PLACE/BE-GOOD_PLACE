@@ -2,6 +2,7 @@ package com.example.roty.favorite.service;
 
 import com.example.roty.domain.entity.Favorite;
 import com.example.roty.domain.request.FavoriteRequest;
+import com.example.roty.domain.response.FavoriteResponse;
 import com.example.roty.domain.response.StoryResponse;
 import com.example.roty.favorite.repository.FavoriteRepository;
 import lombok.RequiredArgsConstructor;
@@ -49,8 +50,9 @@ public class FavoriteService {
         favoriteRepository.deleteById(id);
     }
 
-    public List<Favorite> findAllByUserId(Long userId){
-        return favoriteRepository.findAllByUser_UserId(userId);
+    public List<FavoriteResponse> findAllByUserId(Long userId){
+        List<Favorite> all = favoriteRepository.findAllByUser_UserId(userId);
+        return all.stream().map(FavoriteResponse::new).toList();
     }
 
 }
