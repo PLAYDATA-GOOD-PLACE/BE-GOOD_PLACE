@@ -2,7 +2,7 @@ package com.example.roty.recommned.controller;
 
 import com.example.roty.domain.response.RecommendResponse;
 import com.example.roty.recommned.service.RecommendService;
-import com.example.roty.store.service.FirebaseService;
+import com.example.roty.config.FirebaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

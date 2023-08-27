@@ -1,4 +1,4 @@
-package com.example.roty.store.service;
+package com.example.roty.config;
 
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Bucket;
