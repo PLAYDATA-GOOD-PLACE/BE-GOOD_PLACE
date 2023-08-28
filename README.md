@@ -1,1 +1,1 @@
-# BE-GOOD_PLACE
+# 위치 기반 맛집 검색 및 추천 서비스 - Back End

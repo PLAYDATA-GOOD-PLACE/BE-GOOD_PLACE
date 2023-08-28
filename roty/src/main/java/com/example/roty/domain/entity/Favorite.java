@@ -18,7 +18,6 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long favorite_id;
 
-
     @JsonIgnoreProperties("favorites")
     @ManyToOne
     private User user;
@@ -26,5 +25,4 @@ public class Favorite {
     @JsonIgnoreProperties("favorites")
     @ManyToOne
     private Store store;
-
 }
